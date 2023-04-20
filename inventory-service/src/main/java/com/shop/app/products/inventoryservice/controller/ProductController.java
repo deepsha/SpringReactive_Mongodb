@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.shop.app.products.inventoryservice.dto.ProductDto;
+import com.shop.app.products.inventoryservice.exception.ProductAPIexception;
 import com.shop.app.products.inventoryservice.service.ProductService;
 
 import reactor.core.publisher.Flux;
@@ -45,7 +46,11 @@ public class ProductController {
 	@ResponseStatus(HttpStatus.OK)
 	public  ResponseEntity<Mono<ProductDto>> getProductById(@PathVariable String id)
 	{
-		Mono<ProductDto> product= productService.getProductById(id);
+		Mono<ProductDto> product = productService.getProducts()
+		.filter(book -> book.getId().equals(id))
+        .next()
+        .switchIfEmpty(Mono.error(new ProductAPIexception("Product not found with id " + id)));
+		
 		HttpStatus status = (product != null) ? HttpStatus.OK : HttpStatus.NOT_FOUND;
 		return new ResponseEntity<>(product, status);
 	}

@@ -5,6 +5,7 @@ import org.springframework.beans.BeanUtils;
 import com.shop.app.products.inventoryservice.dto.ProductDto;
 import com.shop.app.products.inventoryservice.entity.Product;
 
+
 public class AppUtils {
 	
 	public static ProductDto entityToDTO(Product product)

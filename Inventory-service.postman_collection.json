@@ -1,0 +1,178 @@
+{
+	"info": {
+		"_postman_id": "e222c22b-70be-4d2a-8318-8123302b23d4",
+		"name": "Inventory-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Floor cleaner\",\n\t\"quantity\" : 5,\t\n    \"price\": 14.0\n}\n\n"
+				},
+				"url": {
+					"raw": "http://localhost:8082/inventory/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"inventory",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Coco\",\n    \"quantity\": 15,\n    \"price\": 5.0\n}\n\n\n"
+				},
+				"url": {
+					"raw": "http://localhost:8082/inventory/products/6440b0866eebf649133d1d7f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"inventory",
+						"products",
+						"6440b0866eebf649133d1d7f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET all products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/inventory/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"inventory",
+						"products"
+					]
+				},
+				"description": "A specific application id"
+			},
+			"response": []
+		},
+		{
+			"name": "get products By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/inventory/products/6440aee38341bb22fa962d28",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"inventory",
+						"products",
+						"6440aee38341bb22fa962d28"
+					]
+				},
+				"description": "A specific application id"
+			},
+			"response": []
+		},
+		{
+			"name": "get product by range",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "min",
+						"value": "5.0",
+						"type": "default",
+						"disabled": true
+					},
+					{
+						"key": "max",
+						"value": "10.0",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8082/inventory/products/range?min=5.0&max=15.0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"inventory",
+						"products",
+						"range"
+					],
+					"query": [
+						{
+							"key": "min",
+							"value": "5.0"
+						},
+						{
+							"key": "max",
+							"value": "15.0"
+						}
+					]
+				},
+				"description": "list all applications"
+			},
+			"response": []
+		},
+		{
+			"name": "delete product by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/inventory/products/6440b0866eebf649133d1d7f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"inventory",
+						"products",
+						"6440b0866eebf649133d1d7f"
+					]
+				},
+				"description": "list all applications"
+			},
+			"response": []
+		}
+	]
+}
